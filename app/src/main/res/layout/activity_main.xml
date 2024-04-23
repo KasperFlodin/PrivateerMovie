@@ -10,7 +10,9 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/ll_navcontainer"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -21,21 +23,35 @@
         android:background="@color/black"
         >
         <ImageView
-            android:id="@+id/btn_fragment1"
+            android:id="@+id/nav_movie"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_local_movies_24"
             android:background="@color/black"
-            android:padding="10dp"/>
+            android:padding="20dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
         <ImageView
-            android:id="@+id/btn_fragment2"
+            android:id="@+id/nav_series"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_local_movies_24"
-            android:padding="10dp"
-            android:background="@color/black"/>
+            android:src="@drawable/baseline_series_24"
+            android:padding="20dp"
+            android:background="@color/black"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
+        <ImageView
+            android:id="@+id/nav_watchlist"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_format_list_bulleted_24"
+            android:padding="20dp"
+            android:background="@color/black"
+            android:scaleX="1.5"
+            android:scaleY="1.5"/>
 
     </LinearLayout>
 
@@ -44,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/fragment_container"
         android:src="@drawable/baseline_search_48"
