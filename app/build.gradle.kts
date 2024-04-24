@@ -43,6 +43,12 @@ dependencies {
     implementation(libs.gson)
     // https://mvnrepository.com/artifact/com.android.volley/volley
     implementation(libs.volley)
+    // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
+    implementation(libs.picasso)
+    // https://mvnrepository.com/artifact/com.github.bumptech.glide/glide
+    implementation(libs.glide)
+
+
 
 
 

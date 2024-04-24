@@ -3,7 +3,6 @@ package com.example.privateermovie;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,14 +18,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Response;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    RequestQueue rq;
+    public static RequestQueue rq;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         initGui();
-        fragmentChanger(StartFragment.class);
         rq = Volley.newRequestQueue(getApplicationContext());
-        getMovieBySearch("Star Wars");
+        fragmentChanger(StartFragment.class);
+        //getMovieBySearch("Star Wars");
         //getMovieByIdAsync(17);
     }
 
@@ -48,13 +45,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.nav_movie).setOnClickListener(v -> {fragmentChanger(MovieFragment.class);});
         findViewById(R.id.nav_series).setOnClickListener(v -> {fragmentChanger(SeriesFragment.class);});
         findViewById(R.id.nav_watchlist).setOnClickListener(v -> {fragmentChanger(WatchlistFragment.class);});
-        findViewById(R.id.btn_search).setOnClickListener(v -> {});
+        findViewById(R.id.btn_search).setOnClickListener(v -> {fragmentChanger(SearchFragment.class);});
     }
 
 
     private void fragmentChanger(Class c) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
+        // if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, c, null)
                 .setReorderingAllowed(true)
                 .addToBackStack("name") // Name can be null
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders(){
                     Map<String, String>  params = new HashMap<String, String>();
-                    params.put("Authorization", secrets.Token);
+                    params.put("Authorization", Secrets.Token);
                     return params;
                 }
             };
@@ -112,22 +110,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void getMovieBySearch(String query)       {
-        String url = "https://api.themoviedb.org/3/search/movie?query=" + query;
-        StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
-            MovieSearch movieSearch = new Gson().fromJson(response, MovieSearch.class);
-            Toast.makeText(getApplicationContext(), movieSearch.total_results, Toast.LENGTH_LONG).show();
-        }, error -> Log.e("Volley", error.toString()))
-        {
-            @Override
-            public Map<String, String> getHeaders(){
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", secrets.Token);
-                return params;
-            }
-        };
-        rq.add(request);
-    }
+
+
+
 
 
 
