@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
+import com.example.privateermovie.Models.MovieSearch;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

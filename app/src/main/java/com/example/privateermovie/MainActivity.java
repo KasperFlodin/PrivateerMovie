@@ -17,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.privateermovie.Models.Movie;
 import com.google.gson.Gson;
 
 import java.util.HashMap;

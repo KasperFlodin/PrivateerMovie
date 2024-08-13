@@ -1,4 +1,4 @@
-package com.example.privateermovie;
+package com.example.privateermovie.Models;
 
 import java.util.ArrayList;
 
